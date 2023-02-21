@@ -9,6 +9,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./assets/custom.css">
+	<script src="https://kit.fontawesome.com/306ab2f3b3.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
@@ -36,52 +38,10 @@
 	</section>
 	<section id="portfolio">
 		<h2>Mes Projets</h2>
-		<div class="gallery">
-			<figure>
-				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-				<figcaption>Abajour Tahina</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-v.png" alt="Appartement Paris V">
-				<figcaption>Appartement Paris V</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
-				<figcaption>Restaurant Sushisen - Londres</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
-				<figcaption>Villa “La Balisiere” - Port Louis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/structures-thermopolis.png" alt="Structures Thermopolis">
-				<figcaption>Structures Thermopolis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-x.png" alt="Appartement Paris X">
-				<figcaption>Appartement Paris X</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
-				<figcaption>Pavillon “Le coteau” - Cassis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
-				<figcaption>Villa Ferneze - Isola d’Elba</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
-				<figcaption>Appartement Paris XVIII</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris">
-				<figcaption>Bar “Lullaby” - Paris</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
-				<figcaption>Hotel First Arte - New Delhi</figcaption>
-			</figure>
+		<div class="filters">
+			<button onclick="getWork(0);">Tous</button>
 		</div>
+		<div class="gallery"></div>
 	</section>
 	<section id="contact">
 		<h2>Contact</h2>
@@ -107,3 +67,78 @@
 </footer>
 </body>
 </html>
+<script>
+
+const baseApi = "http://localhost:5678/api";
+const routeCategory = "/categories";
+const routeWork = "/works";
+const tableWork = [];
+
+fetch( baseApi + routeCategory )
+	.then(response => response.json())
+	.then(data => {
+
+		data.map((item) => {
+			var e_0 = document.createElement("button");
+			e_0.setAttribute("id", item.id);
+			e_0.appendChild(document.createTextNode(item.name));
+			document.querySelector(".filters").appendChild(e_0);
+		});
+	
+}).catch(error => {
+		console.log(error);
+});
+
+fetch( baseApi + routeWork )
+    .then(response => response.json())
+    .then(data => {
+		tableWork.push(data);
+		init();
+}).catch(error => {
+    console.log(error);
+});
+
+function getWork(filterId){
+
+    document.querySelector(".gallery").innerHTML = "";
+
+	var dataFilter;
+
+	if (filterId != 0)
+		dataFilter = tableWork[0].filter((item) => item.categoryId == filterId);
+	else
+		dataFilter = tableWork[0];
+
+	console.log(dataFilter, tableWork.categoryId);
+
+    dataFilter.map((item) => {
+        var e_0 = document.createElement("figure");
+        var e_1 = document.createElement("img");
+        e_1.setAttribute("src", item.imageUrl);
+        e_1.setAttribute("alt", item.title);
+        e_0.appendChild(e_1);
+        var e_2 = document.createElement("figcaption");
+        e_2.appendChild(document.createTextNode(item.title));
+        e_0.appendChild(e_2);
+        document.querySelector(".gallery").appendChild(e_0);
+    });
+
+}
+
+function init() {
+	getWork(0);
+	document.querySelectorAll(".filters button").forEach((item) => {
+		item.addEventListener("click", function(){
+			getWork(item.id);
+
+			document.querySelectorAll(".filters button").forEach((item) => {
+				item.classList.remove("active");
+			});
+
+			item.classList.add("active");
+			
+		});
+	});
+}
+
+</script>

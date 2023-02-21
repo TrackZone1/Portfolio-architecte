@@ -11,15 +11,17 @@
 	<link rel="stylesheet" href="./assets/style.css">
 	<link rel="stylesheet" href="./assets/edition.css">
     <link rel="stylesheet" href="./assets/custom.css">
+	<script src="https://kit.fontawesome.com/306ab2f3b3.js" crossorigin="anonymous"></script>
 
 </head>
+
 <body>
 
 <div class="barEdition">
-	<p>Mode édition</p>
+	<p><i class="fa-regular fa-pen-to-square"></i> Mode édition</p>
 	<button>publier les changements</button>
 </div>
-
+	
 <header>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
@@ -44,7 +46,10 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<div id="editButton">
+			<h2>Mes Projets</h2>
+			<button><i class="fa-regular fa-pen-to-square"></i> modifier</button>
+		</div>
 		<div class="gallery">
 			<figure>
 				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
@@ -114,5 +119,6 @@
 		</ul>
 	</nav>
 </footer>
+
 </body>
 </html>

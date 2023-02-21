@@ -5,3 +5,36 @@ a {
 input[type="submit"] {
     cursor: pointer;
 }
+
+
+.filters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 50px;
+}
+
+.filters button {
+    background-color: transparent;
+    color: #1D6154;
+    border: 2px solid #1D6154;
+    padding: 9px 30px;
+    border-radius: 60px;
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+}
+
+.filters button:hover {
+    background-color: #1D6154;
+    color: #fff;
+}
+
+.filters button.active {
+    background-color: #1D6154;
+    color: #fff;
+}
