@@ -24,16 +24,17 @@
 	</nav>
 </header>
 <main>
-	<section id="contact">
+	<section id="login">
 		<h2>Login</h2>
-		<form action="#" method="post">
+		<div>
+			<small style="text-align: center; font-weight: 700;" id="error"></small>
 			<label for="email">E-mail</label>
-			<input type="email" name="email" id="email">
+			<input type="email" id="email">
 			<label for="email">Mot de passe</label>
-			<input type="password" name="password" id="password">
-            <input type="submit" value="Se connecter">
+			<input type="password" id="password">
+            <input type="submit" value="Se connecter" onclick="Login()">
             <a href="#" style="text-align: center;">Mot de passe oublié</a>
-		</form>
+		</div>
 	</section>
 </main>
 
@@ -46,3 +47,5 @@
 </footer>
 </body>
 </html>
+<script src="./assets/js/main.js"></script>
+<script src="./assets/js/login.js"></script>

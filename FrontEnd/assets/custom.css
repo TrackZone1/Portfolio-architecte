@@ -2,6 +2,11 @@ a {
     color: #3D3D3D;
 }
 
+ul a {
+    color: #000000;
+    text-decoration: none;
+}
+
 input[type="submit"] {
     cursor: pointer;
 }
@@ -37,4 +42,97 @@ input[type="submit"] {
 .filters button.active {
     background-color: #1D6154;
     color: #fff;
+}
+
+#login {
+	width: 50%;
+    margin: auto;
+}
+#login > * {
+	text-align: center;
+
+}
+#login h2{
+	margin-bottom: 20px;
+}
+#login div {
+	text-align: left;
+	margin-top:30px;
+	display: flex;
+	flex-direction: column;
+}
+
+#login input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#login label {
+	margin: 2em 0 1em 0;
+}
+#login textarea {
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.modal-fader {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 99998;
+    background: rgba(0,0,0,0.8);
+}
+.modal-fader.active {
+    display: block;
+}
+
+.modal-window {
+    display: none;
+    position: fixed;
+    left: 50%;
+	top: 30%;
+    transform: translateX(-50%);
+    z-index: 99999;
+    background: #fff;
+    padding: 60px 100px;
+    border-radius: 5px;
+    font-family: sans-serif;
+}
+.modal-window.active {
+    display: block;
+}
+
+.modal-window h2 {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 30px;
+    text-align: center;
+    color: #000000;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+}
+
+.modal-window hr {
+    margin: 38px;
+    border: 1px solid #B3B3B3;
+}
+
+.modal-window .submitGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

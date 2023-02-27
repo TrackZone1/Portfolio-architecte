@@ -177,7 +177,9 @@ input[type="submit"]{
 	margin : 2em auto ;
 	width: 180px;
 	text-align: center;
-	border-radius: 60px ;
+	border-radius: 60px;
+	border: 0;
+	padding: 10px;
 }
 
 footer nav ul {
