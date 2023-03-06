@@ -56,3 +56,35 @@
     border: 0;
     margin-bottom: 1em;
 }
+
+#listWork {
+    margin-top: 46px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#listWork figure {
+    flex-basis: 20%;
+}
+
+#listWork figure .buttonGroup {
+    transform: translate(35px, -120px);
+    -ms-transform: translate(-10px, -10px);
+    border: none;
+    cursor: pointer;
+    border-radius: 2.5px;
+    padding: 4px;
+    font-size: 12px;
+}
+
+#listWork figure .buttonGroup button {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 4px;
+    border-radius: 2.5px;
+}
+
+#listWork figcaption {
+    margin-bottom: 10px;
+}

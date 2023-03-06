@@ -93,15 +93,16 @@ input[type="submit"] {
 
 .modal-window {
     display: none;
-    position: fixed;
+    position: absolute;
     left: 50%;
-	top: 30%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
     z-index: 99999;
     background: #fff;
     padding: 60px 100px;
     border-radius: 5px;
     font-family: sans-serif;
+    max-width: 550px !important;
 }
 .modal-window.active {
     display: block;
