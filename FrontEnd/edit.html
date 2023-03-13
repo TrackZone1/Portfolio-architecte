@@ -116,8 +116,36 @@
 
 	<hr>
 	<div class="submitGroup">
-		<input type="submit" value="Ajouter une photo" onclick="">
+		<input type="submit" value="Ajouter une photo" class="open-modal" data-target="modal-2">
 		<a style="color:#D65353;" onclick="">Supprimer la galerie</a>
+	</div>
+</div>
+
+<div id="modal-2" class="modal-window">
+	<button class="modal-return open-modal" data-target="modal-1"><i class="fa-solid fa-arrow-left"></i></button>
+	<button class="modal-close modal-hide"><i class="fa-solid fa-xmark"></i></button>
+	<h2>Ajout photo</h2>
+
+	<div class="uploadImage">
+		<input type="file" accept="image/png, image/jpeg">
+		<i class="fa-regular fa-image"></i>
+		<button><i class="fa-solid fa-plus"></i> Ajouter une photo</button>
+		<small>jpg, png : 4mo max</small>
+
+	</div>
+
+	<div class="form">
+		<label>Titre</label>
+		<input type="text">
+		<label>Catégorie</label>
+		<select>
+			<option>test</option>
+		</select>
+	</div>
+
+	<hr>
+	<div class="submitGroup">
+		<input type="submit" value="Valider" onclick="" disabled>
 	</div>
 </div>
 

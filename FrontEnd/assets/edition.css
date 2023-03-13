@@ -54,7 +54,7 @@
     line-height: 16px;
     text-align: center;
     border: 0;
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
 }
 
 #listWork {
@@ -87,4 +87,53 @@
 
 #listWork figcaption {
     margin-bottom: 10px;
+}
+
+.uploadImage {
+    position: relative;
+    margin-top: 36px;
+    padding: 28px 120px 19px 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #E8F1F6;
+}
+
+.uploadImage input[type="file"] {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.uploadImage > i {
+    font-size: 58px;
+    color: #B9C5CC;
+}
+
+.uploadImage button {
+    margin-top: 30px;
+    margin-bottom: 7px;
+    background:#CBD6DC;
+    padding: 10px;
+    border: 0;
+    color: #306685;
+    border-radius: 60px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.uploadImage small {
+    font-weight: 400;
+    font-size: 10px;
+    color: #444444;
+}
+
+.submitGroup > input:disabled {
+    background: #A7A7A7;
+    color: #fff;
 }
