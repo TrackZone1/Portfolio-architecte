@@ -169,6 +169,7 @@ input[type="submit"] {
     font-weight: 400;
     font-size: 14px;
     color: #444444;
+    padding-left: 16px;
 }
 
 .form select {
@@ -182,4 +183,5 @@ input[type="submit"] {
     font-weight: 400;
     font-size: 14px;
     color: #444444;
+    padding-left: 16px;
 }

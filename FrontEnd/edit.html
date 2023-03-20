@@ -1,157 +1,173 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-	<meta charset="UTF-8">
-	<title>Sophie Bluel - Architecte d'intérieur</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
-	<meta name="description" content="">
-	<link rel="stylesheet" href="./assets/style.css">
-	<link rel="stylesheet" href="./assets/edition.css">
-    <link rel="stylesheet" href="./assets/custom.css">
-	<script src="https://kit.fontawesome.com/306ab2f3b3.js" crossorigin="anonymous"></script>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Sophie Bluel - Architecte d'intérieur</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+            rel="stylesheet"
+        />
+        <meta name="description" content="" />
+        <link rel="stylesheet" href="./assets/style.css" />
+        <link rel="stylesheet" href="./assets/edition.css" />
+        <link rel="stylesheet" href="./assets/custom.css" />
+        <script
+            src="https://kit.fontawesome.com/306ab2f3b3.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
 
-</head>
+    <body>
+        <div class="barEdition">
+            <p><i class="fa-regular fa-pen-to-square"></i> Mode édition</p>
+            <button>publier les changements</button>
+        </div>
 
-<body>
+        <header>
+            <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+            <nav>
+                <ul>
+                    <li>projets</li>
+                    <li>contact</li>
+                    <a onclick="Logout()"><li>logout</li></a>
+                    <li>
+                        <img
+                            src="./assets/icons/instagram.png"
+                            alt="Instagram"
+                        />
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="introduction">
+                <figure>
+                    <img src="./assets/images/sophie-bluel.png" alt="" />
+                </figure>
+                <article>
+                    <h2>Designer d'espace</h2>
+                    <p>
+                        Je raconte votre histoire, je valorise vos idées. Je
+                        vous accompagne de la conception à la livraison finale
+                        du chantier.
+                    </p>
+                    <p>
+                        Chaque projet sera étudié en commun, de façon à mettre
+                        en valeur les volumes, les matières et les couleurs dans
+                        le respect de l’esprit des lieux et le choix adapté des
+                        matériaux. Le suivi du chantier sera assuré dans le
+                        souci du détail, le respect du planning et du budget.
+                    </p>
+                    <p>
+                        En cas de besoin, une équipe pluridisciplinaire
+                        peut-être constituée : architecte DPLG,
+                        décorateur(trice)
+                    </p>
+                </article>
+            </section>
+            <section id="portfolio">
+                <div id="editButton">
+                    <h2>Mes Projets</h2>
+                    <button class="open-modal" data-target="modal-1">
+                        <i class="fa-regular fa-pen-to-square"></i> modifier
+                    </button>
+                </div>
+                <div class="gallery"></div>
+            </section>
 
-<div class="barEdition">
-	<p><i class="fa-regular fa-pen-to-square"></i> Mode édition</p>
-	<button>publier les changements</button>
-</div>
-	
-<header>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-	<nav>
-		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<a onclick="Logout()"><li>logout</li></a>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
-</header>
-<main>
-	<section id="introduction">
-		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="">
-		</figure>
-		<article>
-			<h2>Designer d'espace</h2>
-			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
-			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
-			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
-		</article>
-	</section>
-	<section id="portfolio">
-		<div id="editButton">
-			<h2>Mes Projets</h2>
-			<button class="open-modal" data-target="modal-1"><i class="fa-regular fa-pen-to-square"></i> modifier</button>
-		</div>
-		<div class="gallery"></div>
-	</section>
+            <section id="contact">
+                <h2>Contact</h2>
+                <p>Vous avez un projet ? Discutons-en !</p>
+                <form action="#" method="post">
+                    <label for="name">Nom</label>
+                    <input type="text" name="name" id="name" />
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" />
+                    <label for="message">Message</label>
+                    <textarea
+                        name="message"
+                        id="message"
+                        cols="30"
+                        rows="10"
+                    ></textarea>
+                    <input type="submit" value="Envoyer" />
+                </form>
+            </section>
+        </main>
 
-	<section id="contact">
-		<h2>Contact</h2>
-		<p>Vous avez un projet ? Discutons-en !</p>
-		<form action="#" method="post">
-			<label for="name">Nom</label>
-			<input type="text" name="name" id="name">
-			<label for="email">Email</label>
-			<input type="email" name="email" id="email">
-			<label for="message">Message</label>
-			<textarea name="message" id="message" cols="30" rows="10"></textarea>
-			<input type="submit" value="Envoyer">
-		</form>
-	</section>
-</main>
+        <footer>
+            <nav>
+                <ul>
+                    <li>Mentions Légales</li>
+                </ul>
+            </nav>
+        </footer>
 
-<footer>
-	<nav>
-		<ul>
-			<li>Mentions Légales</li>
-		</ul>
-	</nav>
-</footer>
+        <div id="modal-1" class="modal-window">
+            <button class="modal-close modal-hide">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h2>Galerie photo</h2>
+            <div id="listWork"></div>
 
-<div id="modal-1" class="modal-window">
-	<button class="modal-close modal-hide"><i class="fa-solid fa-xmark"></i></button>
-    <h2>Galerie photo</h2>
-	<div id="listWork">
-		<figure>
-			<img src="http://localhost:5678/images/abajour-tahina1651286843956.png" alt="Abajour Tahina" width="80%">
-			<div class="buttonGroup">
-				<button><i class="fa-solid fa-arrows-up-down-left-right"></i></button>
-				<button><i class="fa-solid fa-trash-can"></i></button>
-			</div>
-			<figcaption>éditer</figcaption>
-		</figure>
-		<figure>
-			<img src="http://localhost:5678/images/abajour-tahina1651286843956.png" alt="Abajour Tahina" width="80%">
-			<figcaption>éditer</figcaption>
-		</figure>
-		<figure>
-			<img src="http://localhost:5678/images/abajour-tahina1651286843956.png" alt="Abajour Tahina" width="80%">
-			<figcaption>éditer</figcaption>
-		</figure>
-		<figure>
-			<img src="http://localhost:5678/images/abajour-tahina1651286843956.png" alt="Abajour Tahina" width="80%">
-			<figcaption>éditer</figcaption>
-		</figure>
-		<figure>
-			<img src="http://localhost:5678/images/abajour-tahina1651286843956.png" alt="Abajour Tahina" width="80%">
-			<figcaption>éditer</figcaption>
-		</figure>
-		<figure>
-			<img src="http://localhost:5678/images/abajour-tahina1651286843956.png" alt="Abajour Tahina" width="80%">
-			<figcaption>éditer</figcaption>
-		</figure>
-		<figure>
-			<img src="http://localhost:5678/images/abajour-tahina1651286843956.png" alt="Abajour Tahina" width="80%">
-			<figcaption>éditer</figcaption>
-		</figure>
-	</div>
+            <hr />
+            <div class="submitGroup">
+                <input
+                    type="submit"
+                    value="Ajouter une photo"
+                    class="open-modal"
+                    data-target="modal-2"
+                />
+                <a style="color: #d65353" onclick="">Supprimer la galerie</a>
+            </div>
+        </div>
 
-	<hr>
-	<div class="submitGroup">
-		<input type="submit" value="Ajouter une photo" class="open-modal" data-target="modal-2">
-		<a style="color:#D65353;" onclick="">Supprimer la galerie</a>
-	</div>
-</div>
+        <div id="modal-2" class="modal-window">
+            <button class="modal-return open-modal" data-target="modal-1">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="modal-close modal-hide">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h2>Ajout photo</h2>
 
-<div id="modal-2" class="modal-window">
-	<button class="modal-return open-modal" data-target="modal-1"><i class="fa-solid fa-arrow-left"></i></button>
-	<button class="modal-close modal-hide"><i class="fa-solid fa-xmark"></i></button>
-	<h2>Ajout photo</h2>
+            <div class="uploadImage">
+                <input
+                    type="file"
+                    accept="image/png, image/jpeg"
+                    onchange="loadFile(event)"
+                    id="image"
+                />
+                <i class="fa-regular fa-image"></i>
+                <button>
+                    <i class="fa-solid fa-plus"></i> Ajouter une photo
+                </button>
+                <small>jpg, png : 4mo max</small>
+            </div>
 
-	<div class="uploadImage">
-		<input type="file" accept="image/png, image/jpeg">
-		<i class="fa-regular fa-image"></i>
-		<button><i class="fa-solid fa-plus"></i> Ajouter une photo</button>
-		<small>jpg, png : 4mo max</small>
+            <div class="form">
+                <label>Titre</label>
+                <input type="text" id="title" />
+                <label>Catégorie</label>
+                <select id="category"></select>
+            </div>
 
-	</div>
+            <hr />
+            <div class="submitGroup">
+                <input
+                    type="submit"
+                    value="Valider"
+                    onclick="AddWork()"
+                    disabled
+                />
+            </div>
+        </div>
 
-	<div class="form">
-		<label>Titre</label>
-		<input type="text">
-		<label>Catégorie</label>
-		<select>
-			<option>test</option>
-		</select>
-	</div>
-
-	<hr>
-	<div class="submitGroup">
-		<input type="submit" value="Valider" onclick="" disabled>
-	</div>
-</div>
-
-<div class="modal-fader"></div>
-
-</body>
+        <div class="modal-fader"></div>
+    </body>
 </html>
 <script src="./assets/js/main.js"></script>
 <script src="./assets/js/modal.js"></script>
