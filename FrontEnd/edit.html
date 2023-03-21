@@ -46,8 +46,18 @@
             <section id="introduction">
                 <figure>
                     <img src="./assets/images/sophie-bluel.png" alt="" />
+                    <button
+                        class="open-modal"
+                        data-target="#"
+                        style="margin: 10px 0 0 50px"
+                    >
+                        <i class="fa-regular fa-pen-to-square"></i> modifier
+                    </button>
                 </figure>
                 <article>
+                    <button class="open-modal" data-target="#">
+                        <i class="fa-regular fa-pen-to-square"></i> modifier
+                    </button>
                     <h2>Designer d'espace</h2>
                     <p>
                         Je raconte votre histoire, je valorise vos idées. Je
@@ -141,11 +151,13 @@
                     onchange="loadFile(event)"
                     id="image"
                 />
-                <i class="fa-regular fa-image"></i>
-                <button>
-                    <i class="fa-solid fa-plus"></i> Ajouter une photo
-                </button>
-                <small>jpg, png : 4mo max</small>
+                <div id="output">
+                    <i class="fa-regular fa-image"></i>
+                    <button>
+                        <i class="fa-solid fa-plus"></i> Ajouter une photo
+                    </button>
+                    <small>jpg, png : 4mo max</small>
+                </div>
             </div>
 
             <div class="form">

@@ -56,6 +56,7 @@ function getWork(filterId) {
 }
 
 function getWorkModal() {
+    document.querySelector("#listWork").innerHTML = "";
     tableWork[0].map((item, i) => {
         var e_0 = document.createElement("figure");
         var e_1 = document.createElement("img");
@@ -73,6 +74,7 @@ function getWorkModal() {
             e_2.appendChild(e_3);
         }
         var e_5 = document.createElement("button");
+        e_5.setAttribute("onclick", "DeleteWork(" + item.id + ")");
         var e_6 = document.createElement("i");
         e_6.setAttribute("class", "fa-solid fa-trash-can");
         e_5.appendChild(e_6);
@@ -94,7 +96,7 @@ document
 var loadFile = function (event) {
     document.querySelector(".uploadImage").classList.add("previewImage");
 
-    document.querySelector(".output").innerHTML =
+    document.querySelector("#output").innerHTML =
         "<img src='" +
         URL.createObjectURL(event.target.files[0]) +
         "' alt='image' width='100%'>";
@@ -148,7 +150,6 @@ function Logout() {
 }
 
 function AddWork() {
-    //image title category
     var image = document.querySelector("#image").files[0];
     var title = document.querySelector("#title").value;
     var category = document.querySelector("#category").value;
@@ -162,14 +163,26 @@ function AddWork() {
         method: "POST",
         body: formData,
         headers: {
-            BearerAuth: document.cookie.split("=")[1],
+            accept: "application/json",
+            Authorization: "Bearer " + document.cookie.split("=")[1],
         },
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+    }).then((response) => {
+        if (response.status != 201) {
+            console.log(response.status);
+        }
+    });
+}
+
+function DeleteWork(id) {
+    fetch(baseApi + routeWork + "/" + id, {
+        method: "DELETE",
+        headers: {
+            accept: "application/json",
+            Authorization: "Bearer " + document.cookie.split("=")[1],
+        },
+    }).then((response) => {
+        if (response.status != 200) {
+            console.log(response.status);
+        }
+    });
 }

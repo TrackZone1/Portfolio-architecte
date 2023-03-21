@@ -45,7 +45,7 @@
     gap: 10px;
 }
 
-#portfolio #editButton button {
+.open-modal {
     background: 0;
     font-family: 'Work Sans';
     font-style: normal;
@@ -98,10 +98,6 @@
     position: relative;
     margin-top: 36px;
     padding: 28px 120px 19px 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     background-color: #E8F1F6;
 }
 
@@ -119,9 +115,22 @@
     cursor: pointer;
 }
 
-.uploadImage > i {
+.uploadImage #output {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.uploadImage #output > i {
     font-size: 58px;
     color: #B9C5CC;
+}
+
+.uploadImage #output > img {
+    width: 100%;
+    height: 193px;
+    object-fit: cover;
 }
 
 .uploadImage button {
