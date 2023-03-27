@@ -6,6 +6,24 @@ const routeWork = "/works"; // GET & POST & DELETE (/id)
 const tableWork = [];
 const tableCategory = [];
 
+init();
+
+document.addEventListener("click", function (event) {
+    var parentElement = event.target.parentNode;
+    console.log(parentElement);
+    if (parentElement) {
+        var parentId = parentElement.id;
+        if (parentId === "DeleteWork") {
+            event.preventDefault();
+            DeleteWork(parentElement.getAttribute("data-id"));
+        }
+    }
+
+    if (event.target.id === "AddWork") {
+        AddWork();
+    }
+});
+
 fetch(baseApi + routeCategory)
     .then((response) => response.json())
     .then((data) => {
@@ -16,16 +34,6 @@ fetch(baseApi + routeCategory)
             e_0.appendChild(document.createTextNode(item.name));
             document.querySelector(".filters").appendChild(e_0);
         });
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-
-fetch(baseApi + routeWork)
-    .then((response) => response.json())
-    .then((data) => {
-        tableWork.push(data);
-        init();
     })
     .catch((error) => {
         console.log(error);
@@ -74,7 +82,8 @@ function getWorkModal() {
             e_2.appendChild(e_3);
         }
         var e_5 = document.createElement("button");
-        e_5.setAttribute("onclick", "DeleteWork(" + item.id + ")");
+        e_5.setAttribute("id", "DeleteWork");
+        e_5.setAttribute("data-id", item.id);
         var e_6 = document.createElement("i");
         e_6.setAttribute("class", "fa-solid fa-trash-can");
         e_5.appendChild(e_6);
@@ -117,7 +126,11 @@ function getCategoryModal() {
     });
 }
 
-function init() {
+async function init() {
+    var res = await fetch(baseApi + routeWork);
+    var data = await res.json();
+    tableWork.push(data);
+
     getWork(0);
     document.querySelectorAll(".filters button").forEach((item) => {
         item.addEventListener("click", function () {
@@ -149,7 +162,7 @@ function Logout() {
     window.location.href = "./login.html";
 }
 
-function AddWork() {
+async function AddWork() {
     var image = document.querySelector("#image").files[0];
     var title = document.querySelector("#title").value;
     var category = document.querySelector("#category").value;
@@ -159,30 +172,30 @@ function AddWork() {
     formData.append("title", title);
     formData.append("category", category);
 
-    fetch(baseApi + routeWork, {
+    const res = await fetch(baseApi + routeWork, {
         method: "POST",
         body: formData,
         headers: {
             accept: "application/json",
             Authorization: "Bearer " + document.cookie.split("=")[1],
         },
-    }).then((response) => {
-        if (response.status != 201) {
-            console.log(response.status);
-        }
     });
+
+    if (res.status != 201) {
+        init();
+    }
 }
 
-function DeleteWork(id) {
-    fetch(baseApi + routeWork + "/" + id, {
+async function DeleteWork(id) {
+    const res = await fetch(baseApi + routeWork + "/" + id, {
         method: "DELETE",
         headers: {
             accept: "application/json",
             Authorization: "Bearer " + document.cookie.split("=")[1],
         },
-    }).then((response) => {
-        if (response.status != 200) {
-            console.log(response.status);
-        }
     });
+
+    if (res.status != 200) {
+        init();
+    }
 }
