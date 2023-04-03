@@ -3,18 +3,14 @@ const routeLogin = "/users/login"; // POST
 const routeCategory = "/categories"; // GET
 const routeWork = "/works"; // GET & POST & DELETE (/id)
 
-const tableWork = [];
+var tableWork = [];
 const tableCategory = [];
-
-init();
 
 document.addEventListener("click", function (event) {
     var parentElement = event.target.parentNode;
-    console.log(parentElement);
     if (parentElement) {
         var parentId = parentElement.id;
         if (parentId === "DeleteWork") {
-            event.preventDefault();
             DeleteWork(parentElement.getAttribute("data-id"));
         }
     }
@@ -29,10 +25,13 @@ fetch(baseApi + routeCategory)
     .then((data) => {
         data.map((item) => {
             tableCategory.push(data);
-            var e_0 = document.createElement("button");
-            e_0.setAttribute("id", item.id);
-            e_0.appendChild(document.createTextNode(item.name));
-            document.querySelector(".filters").appendChild(e_0);
+            if (document.querySelector(".filters")) {
+                var e_0 = document.createElement("button");
+                e_0.setAttribute("id", item.id);
+                e_0.appendChild(document.createTextNode(item.name));
+                document.querySelector(".filters").appendChild(e_0);
+            }
+            init();
         });
     })
     .catch((error) => {
@@ -48,7 +47,7 @@ function getWork(filterId) {
         dataFilter = tableWork[0].filter((item) => item.categoryId == filterId);
     else dataFilter = tableWork[0];
 
-    console.log(dataFilter, tableWork.categoryId);
+    //console.log(dataFilter, tableWork.categoryId);
 
     dataFilter.map((item) => {
         var e_0 = document.createElement("figure");
@@ -96,11 +95,13 @@ function getWorkModal() {
     });
 }
 
-document
-    .querySelector('button[data-target="modal-1"]')
-    .addEventListener("click", function () {
-        getWorkModal();
-    });
+if (document.querySelector('button[data-target="modal-1"]')) {
+    document
+        .querySelector('button[data-target="modal-1"]')
+        .addEventListener("click", function () {
+            getWorkModal();
+        });
+}
 
 var loadFile = function (event) {
     document.querySelector(".uploadImage").classList.add("previewImage");
@@ -127,12 +128,13 @@ function getCategoryModal() {
 }
 
 async function init() {
+    tableWork = [];
     var res = await fetch(baseApi + routeWork);
     var data = await res.json();
     tableWork.push(data);
 
     getWork(0);
-    document.querySelectorAll(".filters button").forEach((item) => {
+    document.querySelectorAll(".filters button").forEach(async (item) => {
         item.addEventListener("click", function () {
             getWork(item.id);
 
@@ -167,6 +169,24 @@ async function AddWork() {
     var title = document.querySelector("#title").value;
     var category = document.querySelector("#category").value;
 
+    if (!image) {
+        document.getElementById("errorModal").innerText =
+            "Veuillez ajouter une image";
+        return false;
+    }
+
+    if (!title) {
+        document.getElementById("errorModal").innerText =
+            "Veuillez ajouter un titre";
+        return false;
+    }
+
+    if (!category) {
+        document.getElementById("errorModal").innerText =
+            "Veuillez ajouter une catégorie";
+        return false;
+    }
+
     var formData = new FormData();
     formData.append("image", image);
     formData.append("title", title);
@@ -181,8 +201,9 @@ async function AddWork() {
         },
     });
 
-    if (res.status != 201) {
+    if (res.status === 201) {
         init();
+        hideAllModalWindows();
     }
 }
 
@@ -195,7 +216,8 @@ async function DeleteWork(id) {
         },
     });
 
-    if (res.status != 200) {
+    if (res.status === 204) {
         init();
+        hideAllModalWindows();
     }
 }
