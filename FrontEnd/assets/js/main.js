@@ -204,6 +204,30 @@ async function AddWork() {
     if (res.status === 201) {
         init();
         hideAllModalWindows();
+
+        document.querySelector("#image").value = "";
+        document.querySelector("#output").innerHTML = "";
+        document.querySelector("#title").value = "";
+        document.querySelector("#category").value = "";
+
+        var e_0 = document.querySelector("#output");
+        var e_1 = document.createElement("i");
+        e_1.setAttribute("class", "fa-regular fa-image");
+        e_0.appendChild(e_1);
+        var e_2 = document.createElement("button");
+        var e_3 = document.createElement("i");
+        e_3.setAttribute("class", "fa-solid fa-plus");
+        e_2.appendChild(e_3);
+        e_2.appendChild(document.createTextNode(" Ajouter une photo\n"));
+        e_0.appendChild(e_2);
+        var e_4 = document.createElement("small");
+        e_4.appendChild(document.createTextNode("jpg, png : 4mo max"));
+        e_0.appendChild(e_4);
+
+        document.querySelector(".uploadImage").classList.remove("previewImage");
+        document
+            .querySelector("div.submitGroup:nth-child(7) > input:nth-child(1)")
+            .addAttribute("disabled");
     }
 }
 
